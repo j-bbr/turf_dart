@@ -94,7 +94,11 @@ List<List<Position>> lineclip(
   return result;
 }
 
-// Sutherland-Hodgman polygon clipping
+// Sutherland-Hodgman polygon clipping.
+//
+// Note: a ring whose vertices all lie outside the box can still cover it
+// (a large polygon around a small box), so there is no shortcut for that
+// case; the result is then the box itself, as in turf.js.
 List<Position> polygonclip(List<Position> points, BBox bbox) {
   List<Position> result = [];
   int edge;
@@ -104,18 +108,6 @@ List<Position> polygonclip(List<Position> points, BBox bbox) {
   Position p;
   bool inside;
 
-  // First check if all points are outside the bounding box
-  final bool allOutside = points.every((p) {
-    return (bitCode(p, bbox) !=
-        0); // If bitCode is non-zero, the point is outside
-  });
-
-  if (allOutside) {
-    // If all points are outside, return an empty list
-    return [];
-  }
-
-  // Otherwise, proceed with the normal clipping
   for (edge = 1; edge <= 8; edge *= 2) {
     result = [];
     prev = points[points.length - 1];

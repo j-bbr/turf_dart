@@ -1,3 +1,8 @@
+## Unreleased
+
+- Implements `bboxClip` for LineString, MultiLineString, Polygon (with holes) and MultiPolygon features
+- Fixes `polygonclip` returning an empty ring for a polygon that encloses the bbox with all its vertices outside it
+
 ## 0.0.14
 
 - Adds missing library exports
