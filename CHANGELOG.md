@@ -1,3 +1,7 @@
+## Unreleased
+
+- Implements `voronoi` on ports of Delaunator 5.1.0, robust-predicates' `orient2d` and d3-delaunay 6.0.6
+
 ## 0.0.14
 
 - Adds missing library exports

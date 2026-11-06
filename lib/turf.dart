@@ -54,3 +54,4 @@ export 'to_mercator.dart';
 export 'to_wgs84.dart';
 export 'transform.dart';
 export 'truncate.dart';
+export 'voronoi.dart';

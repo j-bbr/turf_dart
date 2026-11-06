@@ -55,7 +55,7 @@ Dart. This is an on going project and functions are being added once needed. If 
 - [ ] transformTranslate
 - [ ] transformScale
 - [ ] union
-- [ ] voronoi
+- [x] [voronoi](https://github.com/dartclub/turf_dart/blob/main/lib/src/voronoi.dart)
 - [x] [polyLineDecode](https://github.com/dartclub/turf_dart/blob/main/lib/src/polyline.dart)
 
 ### Feature Conversion
