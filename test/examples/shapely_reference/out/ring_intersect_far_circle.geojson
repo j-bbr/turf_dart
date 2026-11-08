@@ -1,0 +1,9 @@
+{
+  "type": "Feature",
+  "properties": {
+    "shapely": "2.0.7",
+    "area": 0.0,
+    "polygons": 0
+  },
+  "geometry": null
+}

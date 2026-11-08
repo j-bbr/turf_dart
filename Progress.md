@@ -40,13 +40,13 @@ Dart. This is an on going project and functions are being added once needed. If 
 - [ ] bboxClip
 - [ ] bezierSpline
 - [ ] buffer
-- [ ] circle
+- [x] [circle](https://github.com/dartclub/turf_dart/blob/main/lib/src/circle.dart)
 - [x] clone - implemented as a member function of each [GeoJSONObject]
 - [ ] concave
 - [ ] convex
-- [ ] difference
+- [x] [difference](https://github.com/dartclub/turf_dart/blob/main/lib/src/difference.dart)
 - [ ] dissolve
-- [ ] intersect
+- [x] [intersect](https://github.com/dartclub/turf_dart/blob/main/lib/src/intersect.dart) - as `polygonIntersect`, since `lineclip` already exports an `intersect`
 - [ ] lineOffset
 - [x] [polygonSmooth](https://github.com/dartclub/turf_dart/blob/main/lib/src/polygon_smooth.dart)
 - [x] [simplify](https://github.com/dartclub/turf_dart/blob/main/lib/src/simplify.dart)
@@ -54,7 +54,7 @@ Dart. This is an on going project and functions are being added once needed. If 
 - [x] [transformRotate](https://github.com/dartclub/turf_dart/blob/main/lib/src/transform_rotate.dart)
 - [ ] transformTranslate
 - [ ] transformScale
-- [ ] union
+- [x] [union](https://github.com/dartclub/turf_dart/blob/main/lib/src/union.dart)
 - [ ] voronoi
 - [x] [polyLineDecode](https://github.com/dartclub/turf_dart/blob/main/lib/src/polyline.dart)
 

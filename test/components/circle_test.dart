@@ -44,7 +44,7 @@ void main() {
 
               final results = featureCollection([feature, C]);
 
-              Directory outDir = Directory('./test/examples/centroid/out');
+              Directory outDir = Directory('./test/examples/circle/out');
               for (var file2 in outDir.listSync(recursive: true)) {
                 if (file2 is File &&
                     file2.uri.pathSegments.last == file.uri.pathSegments.last) {
