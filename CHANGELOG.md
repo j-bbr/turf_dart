@@ -1,3 +1,9 @@
+## Unreleased
+
+- Implements `mask`, with an optional `keepHoles: true` that also shades holes of the masked polygons
+- Implements `polygonIntersect` (turf.js `intersect`), `union` and `difference`, on a Dart port of the polygon-clipping / polyclip-ts sweep-line clipper with the same exact decimal arithmetic as turf.js v7
+- Fixes the `circle` fixture test, which compared against the `centroid` fixtures
+
 ## 0.0.14
 
 - Adds missing library exports
