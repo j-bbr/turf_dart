@@ -1,0 +1,33 @@
+name: turf_example
+description: >-
+  Interactive examples of turf_dart on a flutter_map map: measurements, line
+  and geodesic operations, transforms, and the polygon operations
+  polygonIntersect, difference, union, mask, bboxClip and voronoi.
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.13.7
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_map: ^8.0.0
+  latlong2: ^0.9.1
+  turf:
+    path: ..
+
+# turf_pip depends on turf from pub.dev; use this checkout everywhere.
+dependency_overrides:
+  turf:
+    path: ..
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/

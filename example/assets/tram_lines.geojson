@@ -1,0 +1,113 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "M10",
+    "note": "Approximate, hand-made sample data for the demo; not survey data."
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      13.3695,
+      52.5251
+     ],
+     [
+      13.381,
+      52.5296
+     ],
+     [
+      13.389,
+      52.532
+     ],
+     [
+      13.396,
+      52.536
+     ],
+     [
+      13.412,
+      52.541
+     ],
+     [
+      13.427,
+      52.539
+     ],
+     [
+      13.444,
+      52.527
+     ],
+     [
+      13.449,
+      52.506
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "M1",
+    "note": "Approximate, hand-made sample data for the demo; not survey data."
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      13.3925,
+      52.521
+     ],
+     [
+      13.3878,
+      52.5253
+     ],
+     [
+      13.402,
+      52.5226
+     ],
+     [
+      13.4013,
+      52.5296
+     ],
+     [
+      13.412,
+      52.541
+     ],
+     [
+      13.4141,
+      52.5492
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "M4",
+    "note": "Approximate, hand-made sample data for the demo; not survey data."
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      13.402,
+      52.5226
+     ],
+     [
+      13.4132,
+      52.5219
+     ],
+     [
+      13.4386,
+      52.5404
+     ],
+     [
+      13.47,
+      52.552
+     ]
+    ]
+   }
+  }
+ ]
+}

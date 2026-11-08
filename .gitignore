@@ -16,3 +16,6 @@ doc/api/
 .idea/
 
 .DS_Store
+
+# the example app keeps its lockfile for reproducible builds
+!example/pubspec.lock

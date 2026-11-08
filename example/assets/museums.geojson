@@ -1,0 +1,201 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Pergamonmuseum",
+    "note": "Approximate, hand-made sample data for the demo; not survey data."
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.3969,
+     52.5212
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Neues Museum",
+    "note": "Approximate, hand-made sample data for the demo; not survey data."
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.398,
+     52.52
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Alte Nationalgalerie",
+    "note": "Approximate, hand-made sample data for the demo; not survey data."
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.399,
+     52.5208
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Bode-Museum",
+    "note": "Approximate, hand-made sample data for the demo; not survey data."
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.3946,
+     52.522
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "DDR Museum",
+    "note": "Approximate, hand-made sample data for the demo; not survey data."
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.4024,
+     52.5193
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Deutsches Historisches Museum",
+    "note": "Approximate, hand-made sample data for the demo; not survey data."
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.397,
+     52.5178
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "J\u00fcdisches Museum",
+    "note": "Approximate, hand-made sample data for the demo; not survey data."
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.3946,
+     52.5021
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Museum f\u00fcr Naturkunde",
+    "note": "Approximate, hand-made sample data for the demo; not survey data."
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.3793,
+     52.53
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Deutsches Technikmuseum",
+    "note": "Approximate, hand-made sample data for the demo; not survey data."
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.3776,
+     52.4986
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Hamburger Bahnhof",
+    "note": "Approximate, hand-made sample data for the demo; not survey data."
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.3717,
+     52.5284
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Gem\u00e4ldegalerie",
+    "note": "Approximate, hand-made sample data for the demo; not survey data."
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.3653,
+     52.5085
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Topographie des Terrors",
+    "note": "Approximate, hand-made sample data for the demo; not survey data."
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.3836,
+     52.5065
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Berlinische Galerie",
+    "note": "Approximate, hand-made sample data for the demo; not survey data."
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.3976,
+     52.503
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "M\u00e4rkisches Museum",
+    "note": "Approximate, hand-made sample data for the demo; not survey data."
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.41,
+     52.5129
+    ]
+   }
+  }
+ ]
+}

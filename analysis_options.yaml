@@ -1,5 +1,9 @@
 include: package:lints/recommended.yaml
 
 analyzer:
+  exclude:
+    # Flutter app with its own analysis options; analyse it with
+    # `flutter analyze` in that directory.
+    - example/**
   errors:
     prefer_generic_function_type_aliases: error
