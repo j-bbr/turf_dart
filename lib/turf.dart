@@ -38,6 +38,7 @@ export 'line_slice.dart';
 export 'line_slice_along.dart';
 export 'line_to_polygon.dart';
 export 'lineclip.dart';
+export 'mask.dart';
 export 'meta.dart';
 export 'midpoint.dart';
 export 'nearest_point_on_line.dart';

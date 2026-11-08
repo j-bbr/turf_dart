@@ -1,7 +1,10 @@
 // Writes the inputs of the shapely reference cases to
 // test/examples/shapely_reference/in. Each case is a FeatureCollection: the
 // first feature is the starting polygon, every further feature one operation
-// applied to the running result, with `"op": "intersect"` or `"difference"`.
+// applied to the running result, with `"op": "intersect"`, `"difference"` or
+// `"union"`. The `mask_*` cases describe the expected `mask(keepHoles: true)`
+// of a polygon with holes instead: the frame, minus the polygon's outer
+// region, plus its holes.
 //
 // tool/reference/make_reference.py computes the expected results with
 // shapely. Run both after changing a case:
@@ -59,6 +62,12 @@ Feature<Polygon> circleOp(double lng, double lat, double km, String op) {
       steps: 64);
   return Feature(geometry: c.geometry, properties: {'op': op});
 }
+
+Feature<Polygon> frameBox(String op) =>
+    box(frame.lng1, frame.lat1, frame.lng2, frame.lat2, op);
+
+Feature<Polygon> ringAs(String op) => Feature(
+    geometry: Polygon(coordinates: [sBahnRing]), properties: {'op': op});
 
 Feature<Polygon> box(num west, num south, num east, num north, String op) =>
     Feature(
@@ -157,6 +166,21 @@ Map<String, List<Feature>> cases() => {
         bisectorHalfPlane(
             Position(13.4300, 52.5400), Position(13.4000, 52.5200)),
         circleOp(13.4100, 52.5100, 0.8, 'difference'),
+      ],
+      // mask(keepHoles: true) of a polygon with a hole: the Ring minus a
+      // circle inside it. Shading = frame − Ring ∪ the hole.
+      'mask_polygon_with_hole': [
+        frameBox('intersect'),
+        ringAs('difference'),
+        circleOp(13.4132, 52.5219, 1, 'union'),
+      ],
+      // ... and with an island in the hole: Ring − 2 km circle + 500 m
+      // circle. Shading = frame − Ring ∪ (2 km circle − 500 m circle).
+      'mask_hole_with_island': [
+        frameBox('intersect'),
+        ringAs('difference'),
+        circleOp(13.4132, 52.5219, 2, 'union'),
+        circleOp(13.4132, 52.5219, 0.5, 'difference'),
       ],
     };
 

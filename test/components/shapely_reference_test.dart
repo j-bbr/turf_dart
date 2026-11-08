@@ -147,6 +147,42 @@ void main() {
       _expectMatchesReference('ring_intersect_far_circle', result);
     });
 
+    test('mask of a polygon with a hole: the hole is shaded', () {
+      final fc = _input('mask_polygon_with_hole');
+      final frame = fc.features[0], ring = fc.features[1];
+      final inner = fc.features[2];
+      final polygon = difference(FeatureCollection(features: [ring, inner]))!;
+      final shading = mask(polygon, mask: frame, keepHoles: true);
+      _expectMatchesReference('mask_polygon_with_hole', shading);
+      expect(shading.geometry, isA<MultiPolygon>());
+
+      // the circle centre (inside the hole) is shaded, the polygon is not
+      expect(
+          booleanPointInPolygon(Position(13.4132, 52.5219), shading), isTrue);
+      expect(booleanPointInPolygon(Position(13.35, 52.50), shading), isFalse);
+      // turf.js' mask leaves the hole unshaded
+      final turfShading = mask(polygon, mask: frame);
+      expect(booleanPointInPolygon(Position(13.4132, 52.5219), turfShading),
+          isFalse);
+    });
+
+    test('mask of a hole with an island', () {
+      final fc = _input('mask_hole_with_island');
+      final frame = fc.features[0], ring = fc.features[1];
+      final hole = fc.features[2], island = fc.features[3];
+      final polygon = union(FeatureCollection(features: [
+        difference(FeatureCollection(features: [ring, hole]))!,
+        island,
+      ]))!;
+      final shading = mask(polygon, mask: frame, keepHoles: true);
+      _expectMatchesReference('mask_hole_with_island', shading);
+      // the island stays unshaded, the hole around it is shaded
+      expect(
+          booleanPointInPolygon(Position(13.4132, 52.5219), shading), isFalse);
+      expect(
+          booleanPointInPolygon(Position(13.4132, 52.5350), shading), isTrue);
+    });
+
     test('ten chained operations: as shapely, no slivers below 1 m²', () {
       final result = _apply(_input('ten_chained_operations'));
       _expectMatchesReference('ten_chained_operations', result);

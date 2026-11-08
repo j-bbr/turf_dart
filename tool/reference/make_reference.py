@@ -2,7 +2,7 @@
 
 Reads every test/examples/shapely_reference/in/<case>.geojson (written by
 tool/reference/make_inputs.dart), applies the operations in order - "op":
-"intersect" or "difference" - and writes the result to
+"intersect", "difference" or "union" - and writes the result to
 test/examples/shapely_reference/out/<case>.geojson as a Feature (geometry null when
 the result becomes empty), with the planar area in square degrees.
 
@@ -35,6 +35,8 @@ def main():
                 area = area.intersection(region)
             elif op == "difference":
                 area = area.difference(region)
+            elif op == "union":
+                area = area.union(region)
             else:
                 raise ValueError(f"{path.name}: unknown op {op}")
         # keep only polygonal parts (intersections can add lines or points)

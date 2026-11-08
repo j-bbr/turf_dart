@@ -94,6 +94,10 @@ results match turf.js, on the Dart VM and on the web. Coordinates are planar
 final remaining = difference(FeatureCollection(features: [district, park]));
 ```
 
+`mask(polygons, mask: frame)` returns the frame with the polygons cut out, as
+turf.js does: holes of the polygons are dropped, so they stay unshaded. Pass
+`keepHoles: true` to get `frame − polygons` instead, which shades the holes too.
+
 ## Tests and Benchmarks
 
 Tests are run with `dart test` and benchmarks can be run with

@@ -79,7 +79,7 @@ Dart. This is an on going project and functions are being added once needed. If 
 - [x] [lineSlice](https://github.com/dartclub/turf_dart/blob/main/lib/src/line_slice.dart)
 - [x] [lineSliceAlong](https://github.com/dartclub/turf_dart/blob/main/lib/src/line_slice_along.dart)
 - [ ] lineSplit
-- [ ] mask
+- [x] [mask](https://github.com/dartclub/turf_dart/blob/main/lib/src/mask.dart) - with an optional `keepHoles` to shade holes of the input
 - [x] [nearestPointOnLine](https://github.com/dartclub/turf_dart/blob/main/lib/src/nearest_point_on_line.dart)
 - [ ] sector
 - [ ] shortestPath
