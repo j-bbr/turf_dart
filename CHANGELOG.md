@@ -3,6 +3,8 @@
 - Implements `mask`, with an optional `keepHoles: true` that also shades holes of the masked polygons
 - Implements `polygonIntersect` (turf.js `intersect`), `union` and `difference`, on a Dart port of the polygon-clipping / polyclip-ts sweep-line clipper with the same exact decimal arithmetic as turf.js v7
 - Fixes the `circle` fixture test, which compared against the `centroid` fixtures
+- Implements `bboxClip` for LineString, MultiLineString, Polygon (with holes) and MultiPolygon features
+- Fixes `polygonclip` returning an empty ring for a polygon that encloses the bbox with all its vertices outside it
 
 ## 0.0.14
 

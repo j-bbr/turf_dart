@@ -83,11 +83,11 @@ void main() {
           greaterThan(0)); // Expect the clipped polygon to have some vertices
     });
 
-    test('Polygon Clipping: Polygon fully outside bbox', () {
+    test('Polygon Clipping: Polygon enclosing the bbox', () {
       // Define a bounding box
       final BBox bbox = BBox.named(lat1: 0.0, lng1: 0.0, lat2: 5.0, lng2: 5.0);
 
-      // Define a polygon that is completely outside the bbox
+      // A polygon with all vertices outside the bbox that encloses it
       final List<Position> points = [
         Position.named(lat: -1.0, lng: -1.0),
         Position.named(lat: -1.0, lng: 6.0),
@@ -95,11 +95,29 @@ void main() {
         Position.named(lat: 6.0, lng: -1.0),
       ];
 
-      // Call the polygon clipping function
       final List<Position> result = polygonclip(points, bbox);
 
-      // The result should be an empty list, as the polygon is completely outside
-      expect(result, equals([]));
+      // The result is the bbox itself
+      expect(result, [
+        Position(0, 5),
+        Position(0, 0),
+        Position(5, 0),
+        Position(5, 5),
+      ]);
+    });
+
+    test('Polygon Clipping: Polygon fully outside bbox', () {
+      final BBox bbox = BBox.named(lat1: 0.0, lng1: 0.0, lat2: 5.0, lng2: 5.0);
+
+      // A polygon entirely to the right of the bbox
+      final List<Position> points = [
+        Position.named(lat: 1.0, lng: 6.0),
+        Position.named(lat: 1.0, lng: 8.0),
+        Position.named(lat: 4.0, lng: 8.0),
+        Position.named(lat: 4.0, lng: 6.0),
+      ];
+
+      expect(polygonclip(points, bbox), equals([]));
     });
   });
 }

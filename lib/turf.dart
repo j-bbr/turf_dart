@@ -7,6 +7,7 @@ library turf;
 export 'package:geotypes/geotypes.dart';
 export 'along.dart';
 export 'area.dart';
+export 'bbox_clip.dart';
 export 'bbox_polygon.dart';
 export 'bbox.dart';
 export 'bearing.dart';

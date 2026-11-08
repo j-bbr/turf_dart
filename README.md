@@ -98,6 +98,12 @@ final remaining = difference(FeatureCollection(features: [district, park]));
 turf.js does: holes of the polygons are dropped, so they stay unshaded. Pass
 `keepHoles: true` to get `frame − polygons` instead, which shades the holes too.
 
+## Clipping to a bounding box
+
+`bboxClip(feature, bbox)` clips lines and polygons, holes included, to a
+bounding box, as turf.js does. It uses Sutherland–Hodgman, which can leave
+zero-width slivers along the box edges.
+
 ## Tests and Benchmarks
 
 Tests are run with `dart test` and benchmarks can be run with

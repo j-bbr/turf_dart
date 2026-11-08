@@ -37,7 +37,7 @@ Dart. This is an on going project and functions are being added once needed. If 
 
 ### Transformation
 
-- [ ] bboxClip
+- [x] [bboxClip](https://github.com/dartclub/turf_dart/blob/main/lib/src/bbox_clip.dart)
 - [ ] bezierSpline
 - [ ] buffer
 - [x] [circle](https://github.com/dartclub/turf_dart/blob/main/lib/src/circle.dart)
