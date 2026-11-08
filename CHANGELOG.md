@@ -5,6 +5,7 @@
 - Fixes the `circle` fixture test, which compared against the `centroid` fixtures
 - Implements `bboxClip` for LineString, MultiLineString, Polygon (with holes) and MultiPolygon features
 - Fixes `polygonclip` returning an empty ring for a polygon that encloses the bbox with all its vertices outside it
+- Implements `voronoi` on ports of Delaunator 5.1.0, robust-predicates' `orient2d` and d3-delaunay 6.0.6
 
 ## 0.0.14
 

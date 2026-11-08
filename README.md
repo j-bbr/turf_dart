@@ -104,6 +104,13 @@ turf.js does: holes of the polygons are dropped, so they stay unshaded. Pass
 bounding box, as turf.js does. It uses Sutherland–Hodgman, which can leave
 zero-width slivers along the box edges.
 
+## Voronoi diagrams
+
+`voronoi(points, bbox: bbox)` returns one cell per point, in input order,
+clipped to the box. Coordinates are planar, as in turf.js; for metric accuracy,
+project the points with `geoToMercator` first and the cells back with
+`geoToWgs84`.
+
 ## Tests and Benchmarks
 
 Tests are run with `dart test` and benchmarks can be run with
