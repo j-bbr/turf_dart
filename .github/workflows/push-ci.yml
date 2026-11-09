@@ -18,8 +18,10 @@ jobs:
       - uses: dart-lang/setup-dart@v1
         with:
           sdk: stable
-      - run: dart pub get
-      - run: dart format --output=none --set-exit-if-changed .
+      # --no-example: example/ is a Flutter app, which the plain Dart SDK
+      # cannot resolve (pub exits with 69). The demo job covers it.
+      - run: dart pub get --no-example
+      - run: dart format --output=none --set-exit-if-changed lib test benchmark tool
       - run: dart analyze
       - run: dart test -p ${{ matrix.platform }}
 
@@ -34,5 +36,6 @@ jobs:
         with:
           channel: stable
       - run: flutter pub get
+      - run: dart format --output=none --set-exit-if-changed .
       - run: flutter analyze
       - run: flutter test

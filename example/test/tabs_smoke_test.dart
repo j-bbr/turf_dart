@@ -44,25 +44,15 @@ void main() {
       await tester.pumpAndSettle();
     }
 
-    // lines tab: every line, with simplification
+    // lines tab: simplify, along and the slice
     await tester.tap(find.widgetWithText(Tab, 'lines'));
     await tester.pumpAndSettle();
-    final names = [
-      for (final item
-          in tester
-              .widget<DropdownButton<int>>(find.byType(DropdownButton<int>))
-              .items!)
-        (item.child as Text).data!,
-    ];
-    for (final name in names) {
-      await tester.tap(find.byType(DropdownButton<int>));
+    expect(find.text('M10'), findsOneWidget);
+    for (final slider in find.byType(Slider).evaluate().toList()) {
+      await tester.drag(find.byWidget(slider.widget), const Offset(60, 0));
       await tester.pumpAndSettle();
-      await tester.tap(find.text(name).last);
-      await tester.pumpAndSettle();
-      await tester.drag(find.byType(Slider).first, const Offset(60, 0));
-      await tester.pumpAndSettle();
-      expect(tester.takeException(), isNull, reason: name);
     }
+    expect(tester.takeException(), isNull);
 
     // transform tab: rotate and smooth further
     await tester.tap(find.widgetWithText(Tab, 'transform'));

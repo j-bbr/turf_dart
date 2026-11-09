@@ -7,10 +7,9 @@ import '../convert.dart';
 import '../demo_map.dart';
 import '../sample_data.dart';
 
-/// Line operations on a tram line or the Ring's boundary: `length`,
-/// `simplify`, `along`, `lineSliceAlong`, `nearestPointOnLine` and
-/// `pointToLineDistance` for a draggable probe, and `lineIntersect` with the
-/// other lines.
+/// Line operations on one tram line: `length`, `simplify`, `along`,
+/// `lineSliceAlong`, and `nearestPointOnLine` and `pointToLineDistance` for a
+/// draggable probe.
 class LinesTab extends StatefulWidget {
   final SampleData data;
 
@@ -27,7 +26,6 @@ class _LineResult {
   final Feature<Point> along;
   final Feature<Point> nearest;
   final num distance;
-  final List<Feature<Point>> crossings;
 
   _LineResult(
     this.length,
@@ -36,32 +34,18 @@ class _LineResult {
     this.along,
     this.nearest,
     this.distance,
-    this.crossings,
   );
 }
 
 class _LinesTabState extends State<LinesTab> {
-  int selected = 0;
   double tolerance = 0;
   RangeValues sliceRange = const RangeValues(0.2, 0.6);
   double alongFraction = 0.4;
   LatLng probe = const LatLng(52.527, 13.40);
 
-  /// The tram lines, then the Ring's boundary as a line.
-  late final List<Feature<LineString>> lines = [
-    ...widget.data.tramLines,
-    Feature<LineString>(
-      geometry: LineString(
-        coordinates: widget.data.ring.geometry!.coordinates[0],
-      ),
-      properties: {'name': 'Ring'},
-    ),
-  ];
-
-  String _name(int i) => '${lines[i].properties?['name'] ?? 'line ${i + 1}'}';
+  late final Feature<LineString> line = widget.data.tramLines.first;
 
   _LineResult _compute() {
-    final line = lines[selected];
     final len = length(line);
     final simplified = tolerance == 0
         ? line
@@ -75,32 +59,20 @@ class _LinesTabState extends State<LinesTab> {
     final probePoint = Point(coordinates: toPosition(probe));
     final nearest = nearestPointOnLine(line.geometry!, probePoint);
     final distance = pointToLineDistance(probePoint, line.geometry!);
-    final crossings = <Feature<Point>>[
-      for (var i = 0; i < lines.length; i++)
-        if (i != selected) ...lineIntersect(line, lines[i]).features,
-    ];
-    return _LineResult(
-      len,
-      simplified,
-      slice,
-      at,
-      nearest,
-      distance,
-      crossings,
-    );
+    return _LineResult(len, simplified, slice, at, nearest, distance);
   }
 
   @override
   Widget build(BuildContext context) {
     final (r, ms) = timed(_compute);
-    final original = lines[selected].geometry!.coordinates.length;
+    final original = line.geometry!.coordinates.length;
     return DemoMap(
       stats: OpStats(
         ms,
         r.simplified.geometry!.coordinates.length,
         '${r.length.toStringAsFixed(2)} km long · '
         'simplify kept ${r.simplified.geometry!.coordinates.length} of '
-        '$original vertices · ${r.crossings.length} crossings',
+        '$original vertices',
       ),
       onBenchmark: () => showBenchmark(
         context,
@@ -112,14 +84,7 @@ class _LinesTabState extends State<LinesTab> {
         runSpacing: 4,
         crossAxisAlignment: WrapCrossAlignment.center,
         children: [
-          DropdownButton<int>(
-            value: selected,
-            items: [
-              for (var i = 0; i < lines.length; i++)
-                DropdownMenuItem(value: i, child: Text(_name(i))),
-            ],
-            onChanged: (v) => setState(() => selected = v ?? selected),
-          ),
+          Text('${line.properties?['name'] ?? 'line'}'),
           LabeledSlider(
             label: 'simplify ${(tolerance * 1e4).toStringAsFixed(0)}e-4°',
             value: tolerance,
@@ -156,24 +121,12 @@ class _LinesTabState extends State<LinesTab> {
           const LegendDot(Colors.orange, 'lineSliceAlong'),
           const LegendDot(Colors.green, 'along'),
           const LegendDot(Colors.red, 'nearestPointOnLine (drag the probe)'),
-          const LegendDot(Colors.black, 'lineIntersect'),
         ],
       ),
       layers: [
         fm.PolylineLayer(
           polylines: [
-            for (var i = 0; i < lines.length; i++)
-              if (i != selected)
-                ...toMapPolylines(
-                  lines[i],
-                  color: Colors.grey.shade500,
-                  width: 2,
-                ),
-            ...toMapPolylines(
-              lines[selected],
-              color: Colors.blueGrey.shade200,
-              width: 7,
-            ),
+            ...toMapPolylines(line, color: Colors.blueGrey.shade200, width: 7),
             ...toMapPolylines(r.slice, color: Colors.orange, width: 7),
             ...toMapPolylines(r.simplified, color: Colors.indigo, width: 2.5),
             fm.Polyline(
@@ -191,14 +144,6 @@ class _LinesTabState extends State<LinesTab> {
                 point: toLatLng(p),
                 radius: 3,
                 color: Colors.indigo,
-              ),
-            for (final c in r.crossings)
-              fm.CircleMarker(
-                point: toLatLng(c.geometry!.coordinates),
-                radius: 6,
-                color: Colors.transparent,
-                borderColor: Colors.black,
-                borderStrokeWidth: 2,
               ),
             fm.CircleMarker(
               point: toLatLng(r.along.geometry!.coordinates),

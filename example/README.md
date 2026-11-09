@@ -7,8 +7,8 @@ tab shows a few related operations with draggable inputs:
 | Tab | Operations |
 | --- | --- |
 | measure | `area`, `length`, `bbox`, `bboxPolygon`, `centroid`, `center`, `centerOfMass`, `pointOnFeature`, `booleanPointInPolygon`, `pointToLineDistance`, `polygonTangents` |
-| lines | `length`, `simplify`, `along`, `lineSliceAlong`, `nearestPointOnLine`, `pointToLineDistance`, `lineIntersect` |
-| geodesic | `distance`, `bearing`, `midpoint`, `greatCircle`, `destination`, and their rhumb-line counterparts `rhumbDistance`, `rhumbBearing`, `rhumbDestination` (world scale) |
+| lines | `length`, `simplify`, `along`, `lineSliceAlong`, `nearestPointOnLine`, `pointToLineDistance` |
+| geodesic | `distance`, `bearing`, `midpoint`, `destination`, and their rhumb-line counterparts `rhumbDistance`, `rhumbBearing`, `rhumbDestination` (world scale) |
 | transform | `transformRotate`, `polygonSmooth`, `explode`, `envelope`, `booleanIntersects`, `booleanContains` |
 | circle | `circle` |
 | intersect / difference / union | `polygonIntersect`, `difference`, `union` of shapes with draggable vertices |
